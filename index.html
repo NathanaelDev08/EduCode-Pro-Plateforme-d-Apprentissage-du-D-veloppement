@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCode Pro - Formation Intensive avec 100+ Exercices</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Styles identiques à l'original - aucun changement nécessaire */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --gradient-2: linear-gradient(135deg, #22c55e, #10b981);
+            --gradient-3: linear-gradient(135deg, #f59e0b, #f97316);
+            --gradient-4: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1600px;
+            margin: 80px auto 0;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Progress Dashboard */
+        .progress-dashboard {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main-progress {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card-small {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value-small {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label-small {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .streak-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .streak-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--warning);
+            line-height: 1;
+        }
+
+        .streak-label {
+            color: var(--gray);
+            margin: 1rem 0;
+        }
+
+        /* Level Navigation */
+        .level-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .level-btn.active {
+            background: var(--gradient-1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .level-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .level-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-chip {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .category-chip:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .category-chip i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1.5fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Exercises Grid */
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .exercise-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .exercise-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .exercise-difficulty {
+            display: flex;
+            gap: 4px;
+        }
+
+        .difficulty-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gray);
+        }
+
+        .difficulty-dot.filled {
+            background: var(--warning);
+        }
+
+        .exercise-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .exercise-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .exercise-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .exercise-status {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .status-in-progress {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .status-locked {
+            background: rgba(100, 116, 139, 0.2);
+            color: var(--gray);
+        }
+
+        /* Advanced Lab */
+        .advanced-lab {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .lab-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lab-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .lab-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lab-tab.active {
+            background: var(--primary);
+        }
+
+        .lab-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lab-editor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 500px;
+        }
+
+        .code-panel {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .code-panel-header {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .file-tab {
+            padding: 0.3rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .file-tab.active {
+            background: var(--primary);
+        }
+
+        .code-editor {
+            flex: 1;
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            background: var(--darker);
+            color: var(--light);
+            border: none;
+            resize: none;
+            outline: none;
+        }
+
+        .output-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-header {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .output-console {
+            flex: 1;
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            background: var(--darker);
+            overflow-y: auto;
+        }
+
+        .console-line {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+        }
+
+        .console-line.error {
+            color: var(--danger);
+        }
+
+        .lab-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+        }
+
+        .path-timeline {
+            margin-top: 1.5rem;
+        }
+
+        .path-node {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .path-node:not(:last-child):before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 50px;
+            bottom: -20px;
+            width: 2px;
+            background: var(--gradient-1);
+        }
+
+        .node-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .node-content {
+            flex: 1;
+        }
+
+        .node-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .node-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Achievements Grid */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievement-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: rgba(15, 23, 42, 0.98);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--light);
+        }
+
+        .footer-col p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background: var(--gradient-1);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .newsletter-btn {
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-badge span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-badge i {
+            color: var(--warning);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .lab-editor {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>EduCode Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="#"><i class="fas fa-home"></i> Accueil</a>
+                <a href="#"><i class="fas fa-road"></i> Parcours</a>
+                <a href="#"><i class="fas fa-flask"></i> Laboratoire</a>
+                <a href="#"><i class="fas fa-tasks"></i> Exercices <span class="level-count">124</span></a>
+                <a href="#"><i class="fas fa-trophy"></i> Compétitions</a>
+            </div>
+            <div class="user-menu">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-envelope"></i>
+                <div class="user-avatar">JD</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Maîtrisez le code avec 124 exercices pratiques</h1>
+                <p>Du débutant à l'expert, notre plateforme vous propose un parcours complet avec des exercices interactifs, des projets concrets et un laboratoire de code avancé.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">124</span>
+                        <span class="stat-label">Exercices</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">28</span>
+                        <span class="stat-label">Projets</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15k+</span>
+                        <span class="stat-label">Apprenants</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="startLearning()">
+                        <i class="fas fa-rocket"></i> Commencer maintenant
+                    </button>
+                    <button class="btn-secondary" onclick="showDemo()">
+                        <i class="fas fa-play"></i> Voir la démo interactive
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Code screen" style="width:100%; border-radius:20px;">
+            </div>
+        </section>
+
+        <!-- Progress Dashboard -->
+        <section class="progress-dashboard">
+            <div class="main-progress">
+                <div class="progress-header">
+                    <div class="progress-title">
+                        <i class="fas fa-chart-line"></i>
+                        Progression globale
+                    </div>
+                    <span class="level-count">Niveau 12</span>
+                </div>
+                <div class="progress-bar" style="height:10px; background:rgba(255,255,255,0.1); border-radius:5px;">
+                    <div class="progress-fill" style="width:45%; height:100%; background:var(--gradient-1); border-radius:5px;"></div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-card-small">
+                        <div class="stat-value-small">45%</div>
+                        <div class="stat-label-small">Global</div>
+                    </div>
+                    <div class="stat-card-small">
+                        <div class="stat-value-small">32</div>
+                        <div class="stat-label-small">Exercices</div>
+                    </div>
+                    <div class="stat-card-small">
+                        <div class="stat-value-small">8</div>
+                        <div class="stat-label-small">Projets</div>
+                    </div>
+                </div>
+            </div>
+            <div class="streak-card">
+                <i class="fas fa-fire" style="font-size:3rem; color:var(--warning);"></i>
+                <div class="streak-number">15</div>
+                <div class="streak-label">Jours consécutifs</div>
+                <div style="display:flex; gap:0.5rem;">
+                    <span class="difficulty-dot filled"></span>
+                    <span class="difficulty-dot filled"></span>
+                    <span class="difficulty-dot filled"></span>
+                    <span class="difficulty-dot filled"></span>
+                    <span class="difficulty-dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Level Navigation -->
+        <div class="level-nav">
+            <div class="level-btn active" onclick="filterLevel('all', this)">
+                <i class="fas fa-layer-group"></i> Tous <span class="level-count">124</span>
+            </div>
+            <div class="level-btn" onclick="filterLevel('beginner', this)">
+                <i class="fas fa-seedling"></i> Débutant <span class="level-count">42</span>
+            </div>
+            <div class="level-btn" onclick="filterLevel('intermediate', this)">
+                <i class="fas fa-tree"></i> Intermédiaire <span class="level-count">38</span>
+            </div>
+            <div class="level-btn" onclick="filterLevel('advanced', this)">
+                <i class="fas fa-fire"></i> Avancé <span class="level-count">28</span>
+            </div>
+            <div class="level-btn" onclick="filterLevel('expert', this)">
+                <i class="fas fa-crown"></i> Expert <span class="level-count">16</span>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories-grid">
+            <div class="category-chip" onclick="filterCategory('javascript')">
+                <i class="fab fa-js"></i>
+                <div>JavaScript</div>
+                <small>42 exos</small>
+            </div>
+            <div class="category-chip" onclick="filterCategory('python')">
+                <i class="fab fa-python"></i>
+                <div>Python</div>
+                <small>38 exos</small>
+            </div>
+            <div class="category-chip" onclick="filterCategory('html')">
+                <i class="fab fa-html5"></i>
+                <div>HTML/CSS</div>
+                <small>24 exos</small>
+            </div>
+            <div class="category-chip" onclick="filterCategory('react')">
+                <i class="fab fa-react"></i>
+                <div>React</div>
+                <small>20 exos</small>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Exercises List -->
+            <div>
+                <h2 style="margin-bottom:1.5rem;"><i class="fas fa-tasks"></i> Exercices disponibles (124)</h2>
+                <div class="exercises-grid" id="exercisesContainer">
+                    <!-- Exercices JavaScript - Débutant -->
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(1)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Variables et types de données</h3>
+                        <p class="exercise-description">Découvrez les bases des variables, les types primitifs et leur manipulation en JavaScript.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 15 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-completed">Complété</span>
+                            <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(2)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Opérateurs et expressions</h3>
+                        <p class="exercise-description">Maîtrisez les opérateurs arithmétiques, de comparaison et logiques.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-in-progress">En cours</span>
+                            <i class="fas fa-spinner" style="color:var(--warning);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(3)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Structures conditionnelles</h3>
+                        <p class="exercise-description">Utilisez if/else, switch et l'opérateur ternaire pour contrôler le flux.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 25 min</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(4)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Boucles et itérations</h3>
+                        <p class="exercise-description">For, while, do...while et les méthodes d'itération modernes.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 30 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(5)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Fonctions - Niveau 1</h3>
+                        <p class="exercise-description">Déclaration, paramètres, return et portée des variables.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 35 min</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="javascript" onclick="loadExercise(6)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Tableaux - Bases</h3>
+                        <p class="exercise-description">Création, manipulation et méthodes essentielles des tableaux.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 25 min</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <!-- JavaScript Intermédiaire -->
+                    <div class="exercise-item" data-level="intermediate" data-category="javascript" onclick="loadExercise(7)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Objets et prototypes</h3>
+                        <p class="exercise-description">Comprenez la programmation orientée objet en JavaScript.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 40 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="intermediate" data-category="javascript" onclick="loadExercise(8)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Fonctions avancées</h3>
+                        <p class="exercise-description">Closures, callbacks, fonctions fléchées et this.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="intermediate" data-category="javascript" onclick="loadExercise(9)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Méthodes de tableau avancées</h3>
+                        <p class="exercise-description">Map, filter, reduce, forEach et chaînage de méthodes.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 35 min</span>
+                            <span><i class="fas fa-star"></i> 5.0</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="intermediate" data-category="javascript" onclick="loadExercise(10)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Manipulation du DOM</h3>
+                        <p class="exercise-description">Sélection, modification et événements sur les éléments HTML.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 50 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <!-- Python Débutant -->
+                    <div class="exercise-item" data-level="beginner" data-category="python" onclick="loadExercise(11)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Python - Premiers pas</h3>
+                        <p class="exercise-description">Installation, premier script et syntaxe de base.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="python" onclick="loadExercise(12)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Variables et types en Python</h3>
+                        <p class="exercise-description">Nombres, chaînes, booléens et conversion de types.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 25 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <!-- HTML/CSS -->
+                    <div class="exercise-item" data-level="beginner" data-category="html" onclick="loadExercise(13)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Structure HTML de base</h3>
+                        <p class="exercise-description">Créez votre première page HTML avec les balises essentielles.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 15 min</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item" data-level="beginner" data-category="html" onclick="loadExercise(14)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fab fa-css3"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">CSS - Selecteurs et propriétés</h3>
+                        <p class="exercise-description">Apprenez à styliser vos pages avec les sélecteurs CSS.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 25 min</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+
+                    <!-- Projets -->
+                    <div class="exercise-item" data-level="intermediate" data-category="project" onclick="loadExercise(15)">
+                        <div class="exercise-header">
+                            <div class="exercise-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                                <span class="difficulty-dot filled"></span>
+                            </div>
+                        </div>
+                        <h3 class="exercise-title">Projet 1: Calculatrice</h3>
+                        <p class="exercise-description">Créez une calculatrice interactive avec HTML, CSS et JavaScript.</p>
+                        <div class="exercise-meta">
+                            <span><i class="far fa-clock"></i> 2h</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="exercise-status">
+                            <span class="status-badge status-locked">À débloquer</span>
+                            <i class="fas fa-lock" style="color:var(--gray);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Lab -->
+            <div>
+                <h2 style="margin-bottom:1.5rem;"><i class="fas fa-flask"></i> Laboratoire avancé</h2>
+                <div class="advanced-lab">
+                    <div class="lab-header">
+                        <div class="lab-tabs">
+                            <div class="lab-tab active" onclick="switchLabTab('code', this)">
+                                <i class="fas fa-code"></i> Code
+                            </div>
+                            <div class="lab-tab" onclick="switchLabTab('preview', this)">
+                                <i class="fas fa-eye"></i> Aperçu
+                            </div>
+                            <div class="lab-tab" onclick="switchLabTab('debug', this)">
+                                <i class="fas fa-bug"></i> Debug
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-cog" style="color:var(--gray); cursor:pointer;"></i>
+                        </div>
+                    </div>
+
+                    <div class="lab-editor">
+                        <div class="code-panel">
+                            <div class="code-panel-header">
+                                <div class="file-tabs">
+                                    <div class="file-tab active" onclick="switchFile('index.html', this)">index.html</div>
+                                    <div class="file-tab" onclick="switchFile('style.css', this)">style.css</div>
+                                    <div class="file-tab" onclick="switchFile('script.js', this)">script.js</div>
+                                </div>
+                                <i class="fas fa-save" style="color:var(--gray);"></i>
+                            </div>
+                            <textarea class="code-editor" id="codeEditor" placeholder="// Écrivez votre code ici...">// Exercice : Créez une fonction qui calcule la factorielle d'un nombre
+function factorielle(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorielle(n - 1);
+}
+
+// Testez votre fonction
+console.log("Factorielle de 5:", factorielle(5));
+console.log("Factorielle de 10:", factorielle(10));
+
+// Défi : Implémentez la suite de Fibonacci
+function fibonacci(n) {
+    // À compléter
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log("Fibonacci(7):", fibonacci(7));</textarea>
+                        </div>
+                        <div class="output-panel">
+                            <div class="output-header">
+                                <span><i class="fas fa-terminal"></i> Console</span>
+                                <button class="btn-secondary" style="padding:0.3rem 1rem;" onclick="clearConsole()">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="output-console" id="outputConsole">
+                                <div class="console-line">> Environnement prêt</div>
+                                <div class="console-line">> Exécutez votre code avec le bouton "Run"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-footer">
+                        <button class="btn-primary" onclick="runCode()">
+                            <i class="fas fa-play"></i> Exécuter (Ctrl+Enter)
+                        </button>
+                        <button class="btn-secondary" onclick="checkSolution()">
+                            <i class="fas fa-check"></i> Vérifier
+                        </button>
+                        <button class="btn-secondary" onclick="showHint()">
+                            <i class="fas fa-lightbulb"></i> Indice
+                        </button>
+                        <button class="btn-secondary" onclick="resetLab()">
+                            <i class="fas fa-undo"></i> Réinitialiser
+                        </button>
+                        <button class="btn-secondary" onclick="saveCode()">
+                            <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                        <div style="flex:1; text-align:right;">
+                            <span style="color:var(--gray);">Ligne 12, Colonne 24</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="display:flex; gap:1rem; margin-top:1rem;">
+                    <button class="btn-secondary" style="flex:1;" onclick="showChallenges()">
+                        <i class="fas fa-trophy"></i> Défis du jour
+                    </button>
+                    <button class="btn-secondary" style="flex:1;" onclick="showCommunity()">
+                        <i class="fas fa-users"></i> Solutions communauté
+                    </button>
+                    <button class="btn-secondary" style="flex:1;" onclick="showAiHelp()">
+                        <i class="fas fa-robot"></i> Aide IA
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path -->
+        <h2 style="margin:3rem 0 1.5rem;"><i class="fas fa-road"></i> Parcours recommandé</h2>
+        <div class="learning-path">
+            <div class="path-timeline">
+                <div class="path-node">
+                    <div class="node-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="node-content">
+                        <div class="node-title">Débutant - Fondamentaux</div>
+                        <div class="node-description">15 exercices pour maîtriser les bases de la programmation</div>
+                        <div style="margin-top:0.5rem;">
+                            <span class="status-badge status-completed">8/15 complétés</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-node">
+                    <div class="node-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="node-content">
+                        <div class="node-title">Intermédiaire - Approfondissement</div>
+                        <div class="node-description">20 exercices pour consolider vos connaissances</div>
+                        <div style="margin-top:0.5rem;">
+                            <span class="status-badge status-in-progress">3/20 complétés</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-node">
+                    <div class="node-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="node-content">
+                        <div class="node-title">Avancé - Maîtrise</div>
+                        <div class="node-description">25 exercices complexes et projets pratiques</div>
+                        <div style="margin-top:0.5rem;">
+                            <span class="status-badge status-locked">Verrouillé</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-node">
+                    <div class="node-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="node-content">
+                        <div class="node-title">Expert - Excellence</div>
+                        <div class="node-description">15 défis d'expert pour devenir un pro</div>
+                        <div style="margin-top:0.5rem;">
+                            <span class="status-badge status-locked">Verrouillé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <h2 style="margin:3rem 0 1.5rem;"><i class="fas fa-trophy"></i> Accomplissements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-badge">
+                <div class="achievement-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="achievement-name">Premier pas</div>
+                <small style="color:var(--gray);">Complété ✓</small>
+            </div>
+            <div class="achievement-badge">
+                <div class="achievement-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="achievement-name">Streak de 7 jours</div>
+                <small style="color:var(--gray);">En cours</small>
+            </div>
+            <div class="achievement-badge">
+                <div class="achievement-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="achievement-name">10 exercices</div>
+                <small style="color:var(--gray);">Complété ✓</small>
+            </div>
+            <div class="achievement-badge">
+                <div class="achievement-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="achievement-name">Contributeur</div>
+                <small style="color:var(--gray);">À débloquer</small>
+            </div>
+            <div class="achievement-badge">
+                <div class="achievement-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="achievement-name">Solutionneur</div>
+                <small style="color:var(--gray);">À débloquer</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>EduCode Pro</h3>
+                    <p>La plateforme d'apprentissage du code la plus complète avec plus de 100 exercices interactifs et un laboratoire avancé.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Formations</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> JavaScript</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Python</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> HTML/CSS</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> React</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Node.js</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Algorithmes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Ressources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutoriels</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Projets</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Forum</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Aide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez nos derniers exercices et actualités directement dans votre boîte mail.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); subscribeNewsletter()">
+                        <input type="email" class="newsletter-input" placeholder="Votre email" id="newsletterEmail" required>
+                        <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Téléchargez l'app</h4>
+                        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                            <a href="#" style="color: var(--gray); font-size: 2rem;"><i class="fab fa-apple"></i></a>
+                            <a href="#" style="color: var(--gray); font-size: 2rem;"><i class="fab fa-google-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2024 EduCode Pro. Tous droits réservés.</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">CGU</a>
+                    <a href="#">Cookies</a>
+                </div>
+                <div class="footer-badge">
+                    <span><i class="fas fa-shield-alt"></i> Paiement sécurisé</span>
+                    <span><i class="fas fa-lock"></i> SSL</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // State management
+        let currentFile = 'script.js';
+        let currentLabTab = 'code';
+        let exercises = [
+            { id: 1, title: 'Variables', level: 'beginner', category: 'javascript', completed: true },
+            { id: 2, title: 'Opérateurs', level: 'beginner', category: 'javascript', completed: false, inProgress: true },
+            // ... plus d'exercices
+        ];
+
+        // Filter exercises by level
+        function filterLevel(level, element) {
+            const exercises = document.querySelectorAll('.exercise-item');
+            exercises.forEach(ex => {
+                if (level === 'all' || ex.dataset.level === level) {
+                    ex.style.display = 'block';
+                } else {
+                    ex.style.display = 'none';
+                }
+            });
+            
+            // Update active button
+            document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
+        function filterCategory(category) {
+            const exercises = document.querySelectorAll('.exercise-item');
+            exercises.forEach(ex => {
+                if (ex.dataset.category === category) {
+                    ex.style.display = 'block';
+                } else {
+                    ex.style.display = 'none';
+                }
+            });
+            
+            showNotification(`Filtre: ${category}`, 'info');
+        }
+
+        // Load exercise in lab
+        function loadExercise(exerciseId) {
+            const exercises = {
+                1: {
+                    title: 'Variables et types de données',
+                    code: `// Exercice 1 : Variables et types de données
+// Objectif : Déclarer et utiliser différents types de variables
+
+// 1. Déclarez une variable 'nom' contenant votre prénom (string)
+let nom = "Votre prénom";
+
+// 2. Déclarez une variable 'age' contenant votre âge (number)
+let age = 25;
+
+// 3. Déclarez une variable 'estEtudiant' indiquant si vous êtes étudiant (boolean)
+let estEtudiant = true;
+
+// 4. Déclarez une variable 'notes' contenant un tableau de nombres (array)
+let notes = [15, 18, 12, 16];
+
+// 5. Déclarez un objet 'personne' regroupant ces informations
+let personne = {
+    nom: nom,
+    age: age,
+    estEtudiant: estEtudiant,
+    notes: notes
+};
+
+// Affichez les résultats
+console.log("Nom:", nom);
+console.log("Age:", age);
+console.log("Est étudiant:", estEtudiant);
+console.log("Notes:", notes);
+console.log("Objet personne:", personne);
+
+// Challenge : Calculez la moyenne des notes
+function calculerMoyenne(notes) {
+    let somme = 0;
+    for (let note of notes) {
+        somme += note;
+    }
+    return somme / notes.length;
+}
+
+console.log("Moyenne des notes:", calculerMoyenne(notes));`
+                },
+                2: {
+                    title: 'Opérateurs et expressions',
+                    code: `// Exercice 2 : Opérateurs et expressions
+// Objectif : Maîtriser les opérateurs en JavaScript
+
+// 1. Opérateurs arithmétiques
+let a = 15;
+let b = 4;
+
+console.log("a + b =", a + b);  // Addition
+console.log("a - b =", a - b);  // Soustraction
+console.log("a * b =", a * b);  // Multiplication
+console.log("a / b =", a / b);  // Division
+console.log("a % b =", a % b);  // Modulo (reste)
+console.log("a ** b =", a ** b); // Puissance
+
+// 2. Opérateurs de comparaison
+console.log("a == b:", a == b);   // Égalité
+console.log("a != b:", a != b);   // Différence
+console.log("a > b:", a > b);     // Supérieur
+console.log("a < b:", a < b);     // Inférieur
+console.log("a >= b:", a >= b);   // Supérieur ou égal
+console.log("a <= b:", a <= b);   // Inférieur ou égal
+
+// 3. Opérateurs logiques
+let x = true;
+let y = false;
+
+console.log("x && y:", x && y);   // ET logique
+console.log("x || y:", x || y);   // OU logique
+console.log("!x:", !x);           // NON logique
+
+// 4. Exercice pratique : Vérification d'âge
+function peutVoter(age, estCitoyen) {
+    return age >= 18 && estCitoyen;
+}
+
+console.log("Peut voter (20 ans, citoyen):", peutVoter(20, true));
+console.log("Peut voter (17 ans, citoyen):", peutVoter(17, true));
+console.log("Peut voter (20 ans, non citoyen):", peutVoter(20, false));
+
+// 5. Challenge : Calculatrice simple
+function calculatrice(a, b, operateur) {
+    switch(operateur) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return b !== 0 ? a / b : "Erreur: division par zéro";
+        default:
+            return "Opérateur invalide";
+    }
+}
+
+console.log("Calculatrice 10 + 5 =", calculatrice(10, 5, '+'));
+console.log("Calculatrice 10 / 0 =", calculatrice(10, 0, '/'));`
+                },
+                3: {
+                    title: 'Structures conditionnelles',
+                    code: `// Exercice 3 : Structures conditionnelles
+// Objectif : Utiliser if/else, switch et l'opérateur ternaire
+
+// 1. If/else basique
+function evaluerNote(note) {
+    if (note >= 90) {
+        return "Excellent";
+    } else if (note >= 80) {
+        return "Très bien";
+    } else if (note >= 70) {
+        return "Bien";
+    } else if (note >= 60) {
+        return "Passable";
+    } else {
+        return "Échec";
+    }
+}
+
+console.log("Note 95:", evaluerNote(95));
+console.log("Note 75:", evaluerNote(75));
+console.log("Note 55:", evaluerNote(55));
+
+// 2. Switch statement
+function getJourSemaine(numero) {
+    switch(numero) {
+        case 1:
+            return "Lundi";
+        case 2:
+            return "Mardi";
+        case 3:
+            return "Mercredi";
+        case 4:
+            return "Jeudi";
+        case 5:
+            return "Vendredi";
+        case 6:
+            return "Samedi";
+        case 7:
+            return "Dimanche";
+        default:
+            return "Numéro invalide";
+    }
+}
+
+console.log("Jour 3:", getJourSemaine(3));
+console.log("Jour 8:", getJourSemaine(8));
+
+// 3. Opérateur ternaire
+function estPair(nombre) {
+    return nombre % 2 === 0 ? "Pair" : "Impair";
+}
+
+console.log("5 est:", estPair(5));
+console.log("8 est:", estPair(8));
+
+// 4. Exercice pratique : Validation de formulaire
+function validerMotDePasse(mdp) {
+    if (mdp.length < 8) {
+        return "Mot de passe trop court (min 8 caractères)";
+    }
+    
+    let aMajuscule = false;
+    let aChiffre = false;
+    
+    for (let char of mdp) {
+        if (char >= 'A' && char <= 'Z') aMajuscule = true;
+        if (char >= '0' && char <= '9') aChiffre = true;
+    }
+    
+    if (!aMajuscule) {
+        return "Doit contenir au moins une majuscule";
+    }
+    
+    if (!aChiffre) {
+        return "Doit contenir au moins un chiffre";
+    }
+    
+    return "Mot de passe valide";
+}
+
+console.log("Test 'abc':", validerMotDePasse("abc"));
+console.log("Test 'Password123':", validerMotDePasse("Password123"));
+
+// 5. Challenge : Pierre-papier-ciseaux
+function jouer(choix1, choix2) {
+    if (choix1 === choix2) return "Égalité";
+    
+    if (
+        (choix1 === "pierre" && choix2 === "ciseaux") ||
+        (choix1 === "papier" && choix2 === "pierre") ||
+        (choix1 === "ciseaux" && choix2 === "papier")
+    ) {
+        return "Joueur 1 gagne";
+    }
+    
+    return "Joueur 2 gagne";
+}
+
+console.log("Pierre vs Ciseaux:", jouer("pierre", "ciseaux"));
+console.log("Papier vs Pierre:", jouer("papier", "pierre"));
+console.log("Ciseaux vs Pierre:", jouer("ciseaux", "pierre"));`
+                },
+                4: {
+                    title: 'Boucles et itérations',
+                    code: `// Exercice 4 : Boucles et itérations
+// Objectif : Maîtriser les différentes boucles en JavaScript
+
+// 1. Boucle for
+console.log("Boucle for - Compter de 1 à 5:");
+for (let i = 1; i <= 5; i++) {
+    console.log("i =", i);
+}
+
+// 2. Boucle while
+console.log("\\nBoucle while - Compter à rebours:");
+let compteur = 5;
+while (compteur > 0) {
+    console.log("compteur =", compteur);
+    compteur--;
+}
+
+// 3. Boucle do...while
+console.log("\\nBoucle do...while - Au moins une exécution:");
+let x = 10;
+do {
+    console.log("x =", x);
+    x++;
+} while (x < 5);
+
+// 4. Parcourir un tableau avec for...of
+let fruits = ["pomme", "banane", "orange", "kiwi"];
+console.log("\\nParcours de fruits:");
+for (let fruit of fruits) {
+    console.log("- " + fruit);
+}
+
+// 5. Parcourir un objet avec for...in
+let personne = {
+    nom: "Jean",
+    age: 30,
+    ville: "Paris"
+};
+console.log("\\nPropriétés de personne:");
+for (let propriete in personne) {
+    console.log(propriete + ": " + personne[propriete]);
+}
+
+// 6. Exercice pratique : Calcul de somme
+function sommeTableau(tableau) {
+    let somme = 0;
+    for (let i = 0; i < tableau.length; i++) {
+        somme += tableau[i];
+    }
+    return somme;
+}
+
+let notes = [15, 18, 12, 16, 14];
+console.log("\\nSomme des notes:", sommeTableau(notes));
+
+// 7. Challenge : Table de multiplication
+function tableMultiplication(n) {
+    console.log("\\nTable de " + n + ":");
+    for (let i = 1; i <= 10; i++) {
+        console.log(n + " x " + i + " = " + (n * i));
+    }
+}
+
+tableMultiplication(7);
+
+// 8. Challenge : Recherche dans un tableau
+function trouverMaximum(tableau) {
+    let max = tableau[0];
+    for (let i = 1; i < tableau.length; i++) {
+        if (tableau[i] > max) {
+            max = tableau[i];
+        }
+    }
+    return max;
+}
+
+console.log("\\nMaximum du tableau:", trouverMaximum([23, 45, 12, 67, 34, 89]));`
+                },
+                5: {
+                    title: 'Fonctions - Niveau 1',
+                    code: `// Exercice 5 : Fonctions - Niveau 1
+// Objectif : Comprendre la création et l'utilisation des fonctions
+
+// 1. Fonction simple sans paramètre
+function direBonjour() {
+    console.log("Bonjour !");
+}
+
+direBonjour();
+
+// 2. Fonction avec paramètres
+function saluer(nom) {
+    console.log("Bonjour " + nom + " !");
+}
+
+saluer("Marie");
+
+// 3. Fonction avec return
+function carre(x) {
+    return x * x;
+}
+
+console.log("Carré de 5:", carre(5));
+
+// 4. Fonction avec plusieurs paramètres
+function somme(a, b) {
+    return a + b;
+}
+
+console.log("Somme de 10 et 20:", somme(10, 20));
+
+// 5. Fonction avec paramètres par défaut
+function multiplier(a, b = 1) {
+    return a * b;
+}
+
+console.log("5 * 2 =", multiplier(5, 2));
+console.log("5 * 1 =", multiplier(5));
+
+// 6. Portée des variables
+let variableGlobale = "Je suis globale";
+
+function testPortee() {
+    let variableLocale = "Je suis locale";
+    console.log(variableGlobale); // Accessible
+    console.log(variableLocale);   // Accessible
+}
+
+testPortee();
+// console.log(variableLocale); // Erreur ! Variable non accessible
+
+// 7. Exercice pratique : Fonction de conversion
+function celsiusEnFahrenheit(celsius) {
+    return celsius * 9/5 + 32;
+}
+
+function fahrenheitEnCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+console.log("25°C en °F:", celsiusEnFahrenheit(25));
+console.log("77°F en °C:", fahrenheitEnCelsius(77));
+
+// 8. Challenge : Fonction récursive
+function factorielle(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorielle(n - 1);
+}
+
+console.log("Factorielle de 5:", factorielle(5));
+console.log("Factorielle de 7:", factorielle(7));
+
+// 9. Challenge : Fonction de validation
+function estPalindrome(mot) {
+    mot = mot.toLowerCase().replace(/ /g, '');
+    let inverse = mot.split('').reverse().join('');
+    return mot === inverse;
+}
+
+console.log("'radar' est palindrome?", estPalindrome("radar"));
+console.log("'bonjour' est palindrome?", estPalindrome("bonjour"));`
+                },
+                6: {
+                    title: 'Tableaux - Bases',
+                    code: `// Exercice 6 : Tableaux - Bases
+// Objectif : Manipuler les tableaux et leurs méthodes
+
+// 1. Création de tableaux
+let fruits = ["pomme", "banane", "orange"];
+let nombres = [1, 2, 3, 4, 5];
+let mixte = ["texte", 42, true, null];
+
+console.log("Fruits:", fruits);
+console.log("Nombres:", nombres);
+console.log("Mixte:", mixte);
+
+// 2. Accès aux éléments
+console.log("Premier fruit:", fruits[0]);
+console.log("Dernier fruit:", fruits[fruits.length - 1]);
+
+// 3. Ajout et suppression d'éléments
+fruits.push("kiwi"); // Ajoute à la fin
+console.log("Après push:", fruits);
+
+fruits.unshift("fraise"); // Ajoute au début
+console.log("Après unshift:", fruits);
+
+let dernierFruit = fruits.pop(); // Supprime le dernier
+console.log("Dernier fruit supprimé:", dernierFruit);
+console.log("Après pop:", fruits);
+
+let premierFruit = fruits.shift(); // Supprime le premier
+console.log("Premier fruit supprimé:", premierFruit);
+console.log("Après shift:", fruits);
+
+// 4. Longueur du tableau
+console.log("Nombre de fruits:", fruits.length);
+
+// 5. Parcours de tableau
+console.log("\\nParcours avec for:");
+for (let i = 0; i < fruits.length; i++) {
+    console.log("fruit " + i + ":", fruits[i]);
+}
+
+console.log("\\nParcours avec forEach:");
+fruits.forEach(function(fruit, index) {
+    console.log("fruit " + index + ":", fruit);
+});
+
+// 6. Recherche dans un tableau
+console.log("Index de 'banane':", fruits.indexOf("banane"));
+console.log("Présence de 'pomme':", fruits.includes("pomme"));
+
+// 7. Exercice pratique : Gestion de notes
+let notes = [15, 18, 12, 16, 14, 17];
+
+function moyenne(tableau) {
+    let somme = 0;
+    for (let note of tableau) {
+        somme += note;
+    }
+    return somme / tableau.length;
+}
+
+function meilleureNote(tableau) {
+    return Math.max(...tableau);
+}
+
+function pireNote(tableau) {
+    return Math.min(...tableau);
+}
+
+console.log("\\nNotes:", notes);
+console.log("Moyenne:", moyenne(notes));
+console.log("Meilleure note:", meilleureNote(notes));
+console.log("Pire note:", pireNote(notes));
+
+// 8. Challenge : Fusion de tableaux
+let tableau1 = [1, 2, 3];
+let tableau2 = [4, 5, 6];
+let fusion = [...tableau1, ...tableau2];
+console.log("Fusion:", fusion);
+
+// 9. Challenge : Tri de tableau
+let desordonne = [3, 1, 4, 1, 5, 9, 2, 6];
+desordonne.sort((a, b) => a - b);
+console.log("Tableau trié:", desordonne);`
+                }
+            };
+            
+            if (exercises[exerciseId]) {
+                const editor = document.getElementById('codeEditor');
+                if (editor) {
+                    editor.value = exercises[exerciseId].code;
+                }
+                showNotification(`Exercice chargé: ${exercises[exerciseId].title}`, 'success');
+            }
+        }
+
+        // Lab functions
+        function runCode() {
+            const code = document.getElementById('codeEditor');
+            const output = document.getElementById('outputConsole');
+            
+            if (!code || !output) return;
+            
+            output.innerHTML = '<div class="console-line">> Exécution en cours...</div>';
+            
+            try {
+                // Capture console.log
+                const logs = [];
+                const originalLog = console.log;
+                console.log = (...args) => {
+                    logs.push(args.map(arg => 
+                        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+                    ).join(' '));
+                };
+                
+                // Execute code
+                eval(code.value);
+                
+                // Restore console.log
+                console.log = originalLog;
+                
+                // Display output
+                output.innerHTML = logs.map(log => 
+                    `<div class="console-line">> ${log}</div>`
+                ).join('');
+                
+                if (logs.length === 0) {
+                    output.innerHTML += '<div class="console-line">> Code exécuté avec succès (aucune sortie)</div>';
+                }
+            } catch (error) {
+                output.innerHTML += `<div class="console-line error">> Erreur : ${error.message}</div>`;
+            }
+        }
+
+        function clearConsole() {
+            const output = document.getElementById('outputConsole');
+            if (output) {
+                output.innerHTML = '<div class="console-line">> Console vidée</div>';
+            }
+        }
+
+        function checkSolution() {
+            showNotification('Solution vérifiée ! Bon travail !', 'success');
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function showHint() {
+            const hints = [
+                "💡 Pensez à utiliser return pour renvoyer une valeur",
+                "💡 Vérifiez vos conditions avec if/else",
+                "💡 N'oubliez pas les points-virgules",
+                "💡 Utilisez console.log() pour déboguer"
+            ];
+            const randomHint = hints[Math.floor(Math.random() * hints.length)];
+            showNotification(randomHint, 'info');
+        }
+
+        function resetLab() {
+            const editor = document.getElementById('codeEditor');
+            const output = document.getElementById('outputConsole');
+            
+            if (editor) {
+                editor.value = `// Exercice : Créez une fonction qui calcule la somme de deux nombres
+function calculerSomme(a, b) {
+    // Votre code ici
+    
+}
+
+// Testez votre fonction
+console.log(calculerSomme(5, 3)); // Devrait afficher 8`;
+            }
+            
+            if (output) {
+                output.innerHTML = '<div class="console-line">> Environnement réinitialisé</div>';
+            }
+            showNotification('Laboratoire réinitialisé', 'info');
+        }
+
+        function saveCode() {
+            const editor = document.getElementById('codeEditor');
+            if (editor) {
+                localStorage.setItem('savedCode', editor.value);
+                showNotification('Code sauvegardé !', 'success');
+            }
+        }
+
+        function switchLabTab(tab, element) {
+            currentLabTab = tab;
+            document.querySelectorAll('.lab-tab').forEach(t => t.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            if (tab === 'preview') {
+                showNotification('Mode aperçu - Bientôt disponible', 'info');
+            }
+        }
+
+        function switchFile(filename, element) {
+            currentFile = filename;
+            document.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Simuler le changement de fichier
+            const files = {
+                'index.html': '<!DOCTYPE html>\n<html>\n<head>\n    <title>Ma Page</title>\n</head>\n<body>\n    <h1>Bienvenue</h1>\n</body>\n</html>',
+                'style.css': 'body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n}\n\nh1 {\n    color: #333;\n}',
+                'script.js': document.getElementById('codeEditor') ? document.getElementById('codeEditor').value : ''
+            };
+            
+            const editor = document.getElementById('codeEditor');
+            if (editor && files[filename]) {
+                editor.value = files[filename];
+            }
+        }
+
+        function updateProgress() {
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                const currentWidth = parseFloat(progressFill.style.width) || 45;
+                if (currentWidth < 100) {
+                    progressFill.style.width = (currentWidth + 1) + '%';
+                }
+            }
+        }
+
+        // Navigation functions
+        function startLearning() {
+            showNotification('Bienvenue dans votre parcours d\'apprentissage !', 'success');
+            loadExercise(1);
+        }
+
+        function showDemo() {
+            showNotification('Mode démo activé', 'info');
+            loadExercise(1);
+        }
+
+        function showChallenges() {
+            showNotification('🏆 Défis du jour disponibles !', 'info');
+        }
+
+        function showCommunity() {
+            showNotification('👥 124 solutions disponibles dans la communauté', 'info');
+        }
+
+        function showAiHelp() {
+            showNotification('🤖 Assistant IA : Posez votre question', 'info');
+        }
+
+        // Newsletter function
+        function subscribeNewsletter() {
+            const emailInput = document.getElementById('newsletterEmail');
+            if (emailInput && emailInput.value) {
+                showNotification('Merci pour votre inscription à la newsletter !', 'success');
+                emailInput.value = '';
+            } else {
+                showNotification('Veuillez entrer une adresse email valide', 'error');
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#22c55e' : type === 'error' ? '#ef4444' : '#6366f1'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+                font-weight: 500;
+                max-width: 300px;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runCode();
+            }
+        });
+
+        // Load saved code on startup
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedCode = localStorage.getItem('savedCode');
+            const editor = document.getElementById('codeEditor');
+            if (savedCode && editor) {
+                editor.value = savedCode;
+                showNotification('Code sauvegardé chargé', 'info');
+            }
+            
+            // Welcome message
+            setTimeout(() => {
+                showNotification('👋 Bienvenue sur EduCode Pro !', 'info');
+            }, 1000);
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
